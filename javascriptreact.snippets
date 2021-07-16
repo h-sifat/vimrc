@@ -1,0 +1,144 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet imp "import package" b
+import ${1:var} from "${2:package}";
+endsnippet
+
+snippet cls "console.log()" w
+console.log($1);
+endsnippet
+
+
+snippet cl "console.log()" w
+console.log($1)
+endsnippet
+
+snippet ce "console.error()" w
+console.error($1)
+endsnippet
+
+snippet req "const identifier = require("package-name")" w
+const ${1:name} = require("${2:package-name}");
+endsnippet
+
+snippet lt "let var = value;" w
+let ${1:name} = ${2:value};
+endsnippet
+
+snippet ct "const var = value;" w
+const ${1:name} = ${2:value};
+endsnippet
+
+snippet fn "function() {}" w
+function ${1:name}(${2:parameters}) {
+	$3
+}
+endsnippet
+
+snippet cm "class method" w
+${1:method}(${2:params}) {
+	$3
+}
+endsnippet
+
+snippet for "for(let i = 0; i < count; i++) {}" b
+for(let ${1:i} = 0; i < ${2:count}; i${3:++}) {$4}
+endsnippet
+
+snippet forof "for of loop" w
+for (let ${1:item} of ${2:array}) {$3}
+endsnippet
+
+snippet ifel "if() {} else {}" b
+if(${1:condition}) {
+	${2:statements}
+} else {
+	${3}
+}
+endsnippet
+
+snippet iff "if(consdition) {}" w
+if(${1:consdition}) {
+	$2
+}
+endsnippet
+
+snippet ifnb "single if statement" w
+if(${1:condition}) $2
+endsnippet
+
+snippet ifr "if(condition) return ;" w
+if(${1:condition}) return $2;
+endsnippet
+
+snippet tar "the tarnery operator" w
+(${1:consdition}) ? ${2:value-1} : ${3:value-2}
+endsnippet
+
+snippet af "arrow function" w
+($1) => {$2}
+endsnippet
+
+# for object properties
+
+snippet kv "key: value," w
+${1:key}: ${2:value},
+endsnippet
+
+snippet ps "prop: 'string'" w
+${1:key}: "${2:value}",
+endsnippet
+
+snippet sps "prop: 'string'" w
+"${1:key}": "${2:value}",
+endsnippet
+
+
+snippet pn "prop: number" w
+${1:key}: ${2:value},
+endsnippet
+
+snippet pa "prop: [array]" w
+${1:key}: [${2:values}],
+endsnippet
+
+snippet trycatch "a try catch block" b
+try {
+	$1
+} catch(${2:ex}) {
+	$3
+}
+endsnippet
+
+snippet sf "single parameter arrow function" w
+${1:param} => ($2)$3
+endsnippet
+
+# for react 
+snippet us "the useState statement" w
+const [${1:val}, ${2:setVal}] = useState(${3:initialVal});$4
+endsnippet
